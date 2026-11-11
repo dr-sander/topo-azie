@@ -6,23 +6,23 @@
 <title>Topo Azië oefenen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Luckiest+Guy&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <style>
 :root{
-  --bg:#EEF3F6;--sea:#C9DDE8;--land:#E3DFD3;--land-line:#FFFFFF;--ink:#16324F;--muted:#5A6B7B;
-  --panel:#FFFFFF;--panel-line:#D5DEE5;--hi:#FFC23C;--hi-ink:#16324F;--ok:#1E9466;--bad:#D4453D;
-  --water:#2C7DB5;--chip:#E2EAF0;
+  --bg:#3B8CF0;--bg2:#2763C9;--on-bg:#FFFFFF;--sea:#BFE3F7;--land:#F3E7C7;--land-line:#FFFFFF;--ink:#1B1035;--muted:#5B5378;
+  --panel:#FFFFFF;--panel-line:#1B1035;--hi:#FFD23F;--hi-ink:#1B1035;--ok:#1FA855;--bad:#E23D34;
+  --water:#1F7FD1;--chip:#EDE7FF;--accent:#8E44EC;--outline:#1B1035;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0F1B26;--sea:#152B3C;--land:#35434F;--land-line:#1B2834;--ink:#E7EEF4;--muted:#9AABBA;
-  --panel:#182633;--panel-line:#2A3B4A;--hi:#FFC23C;--hi-ink:#16324F;--ok:#3DC48D;--bad:#F06A5F;
-  --water:#6BB6EA;--chip:#243545;color-scheme:dark;}}
+  --bg:#24144F;--bg2:#120A2B;--on-bg:#FFFFFF;--sea:#1D2F5A;--land:#4E4278;--land-line:#24144F;--ink:#F4F0FF;--muted:#B7ADD6;
+  --panel:#2B1C58;--panel-line:#0C0620;--hi:#FFD23F;--hi-ink:#1B1035;--ok:#3DDC84;--bad:#FF6B5E;
+  --water:#6EC1FF;--chip:#3A2A70;--accent:#B07CFF;--outline:#0C0620;color-scheme:dark;}}
 :root[data-theme="dark"]{
-  --bg:#0F1B26;--sea:#152B3C;--land:#35434F;--land-line:#1B2834;--ink:#E7EEF4;--muted:#9AABBA;
-  --panel:#182633;--panel-line:#2A3B4A;--hi:#FFC23C;--hi-ink:#16324F;--ok:#3DC48D;--bad:#F06A5F;
-  --water:#6BB6EA;--chip:#243545;color-scheme:dark;}
+  --bg:#24144F;--bg2:#120A2B;--on-bg:#FFFFFF;--sea:#1D2F5A;--land:#4E4278;--land-line:#24144F;--ink:#F4F0FF;--muted:#B7ADD6;
+  --panel:#2B1C58;--panel-line:#0C0620;--hi:#FFD23F;--hi-ink:#1B1035;--ok:#3DDC84;--bad:#FF6B5E;
+  --water:#6EC1FF;--chip:#3A2A70;--accent:#B07CFF;--outline:#0C0620;color-scheme:dark;}
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
 *,*::before,*::after{box-sizing:inherit}
 html,body{height:100%;margin:0}
@@ -111,6 +111,44 @@ h2{font-family:Fredoka,sans-serif;font-weight:600;font-size:1.15rem;margin:22px 
 @keyframes ban{0%{opacity:0;transform:translate(-50%,-50%) scale(.5) rotate(-6deg)}15%{opacity:1;transform:translate(-50%,-50%) scale(1.1) rotate(2deg)}25%{transform:translate(-50%,-50%) scale(1) rotate(0)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-60%) scale(1)}}
 .earned{font-family:Fredoka,sans-serif;font-weight:600;font-size:1.3rem;margin:0 0 6px}
 @media (prefers-reduced-motion:reduce){.pill.pop,.banner{animation:none}}
+
+body{background:linear-gradient(180deg,var(--bg),var(--bg2)) fixed;background-color:var(--bg)}
+header{color:var(--on-bg)}
+h1,.big,.count,.pill,.btn,.iconbtn,.banner,.mode b,h2{font-family:"Luckiest Guy",Fredoka,"Arial Black",sans-serif;font-weight:400;letter-spacing:.03em}
+h1{font-size:1.45rem;text-shadow:0 3px 0 var(--outline)}
+.big{color:var(--on-bg);font-size:2.9rem;text-shadow:3px 3px 0 var(--outline),-2px 2px 0 var(--outline),2px -2px 0 var(--outline),-2px -2px 0 var(--outline),0 6px 0 var(--outline)}
+.overlay{background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.overlay .sub,.overlay .earned{color:var(--on-bg)}
+.overlay .sub{opacity:.9}
+h2{color:var(--on-bg);font-size:1.3rem;text-shadow:0 2px 0 var(--outline)}
+.mapwrap{border:3px solid var(--outline);box-shadow:0 5px 0 var(--outline)}
+.panel{border:3px solid var(--outline);box-shadow:0 5px 0 var(--outline)}
+.btn{background:var(--hi);color:#1B1035;border:3px solid var(--outline);box-shadow:0 4px 0 var(--outline);font-size:1.25rem;padding:9px 16px;transition:transform .06s,box-shadow .06s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--outline)}
+.btn.soft{background:var(--chip);color:var(--ink)}
+.btn.e{font-family:"Atkinson Hyperlegible",sans-serif;font-weight:700}
+.btn:disabled{opacity:.6}
+.iconbtn{background:var(--hi);color:#1B1035;border:3px solid var(--outline);box-shadow:0 3px 0 var(--outline);font-size:1rem}
+.pill{background:rgba(0,0,0,.28);color:#fff;border:2px solid var(--outline);font-size:1.05rem;padding:2px 10px}
+.pill b{font-weight:400}
+.pill.hot{background:#FF7A1A;color:#fff}
+.count{color:var(--on-bg);text-shadow:0 2px 0 var(--outline)}
+.bar{border:2px solid var(--outline);height:14px;background:rgba(0,0,0,.25)}
+.bar>i{background:var(--hi)}
+.mode{border:3px solid var(--outline);box-shadow:0 4px 0 var(--outline);color:var(--ink)}
+.mode b{font-size:1.3rem}
+.mode[aria-pressed="true"]{background:var(--hi);color:#1B1035;border-color:var(--outline);box-shadow:0 4px 0 var(--outline)}
+.mode[aria-pressed="true"] span{color:#3A2E5C}
+.chip{border:3px solid var(--outline);box-shadow:0 3px 0 var(--outline);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--outline)}
+.zoomhint button{border:3px solid var(--outline);box-shadow:0 3px 0 var(--outline);color:var(--ink)}
+.ans{border:3px solid var(--outline)}
+.banner{font-size:2.8rem;border:4px solid #1B1035;box-shadow:0 6px 0 #1B1035;color:#1B1035;background:var(--hi)}
+.banner small{display:block;font-size:1.1rem;text-align:center;margin-top:-4px}
+.rank{display:inline-block;background:var(--hi);color:#1B1035;border:3px solid var(--outline);box-shadow:0 4px 0 var(--outline);border-radius:14px;padding:6px 14px;font-family:"Luckiest Guy",Fredoka,sans-serif;font-size:1.3rem;letter-spacing:.03em;margin-bottom:12px}
+.missed li{color:var(--ink);border:2px solid var(--outline)}
+h1{white-space:nowrap}
+@media (max-width:420px){h1{font-size:1.1rem}header{gap:8px;padding:10px}.pill{font-size:.95rem;padding:2px 8px}}
 </style>
 </head>
 <body>
@@ -118,7 +156,7 @@ h2{font-family:Fredoka,sans-serif;font-weight:600;font-size:1.15rem;margin:22px 
   <header>
     <h1>Topo Azië</h1>
     <div class="bar" aria-hidden="true"><i id="bar"></i></div>
-    <div class="hud"><span class="pill" id="streakPill" title="Op rij goed">🔥 <b id="streak">0</b></span><span class="pill" id="starPill" title="Sterren">⭐ <b id="stars">0</b></span></div>
+    <div class="hud"><span class="pill" id="streakPill" title="Op rij goed">🔥 <b id="streak">0</b></span><span class="pill" id="starPill" title="Trofeeën">🏆 <b id="stars">0</b></span></div>
     <div class="count" id="count">0 / 0</div>
     <button class="iconbtn" id="menuBtn" aria-label="Instellingen">Stop</button>
   </header>
@@ -135,8 +173,8 @@ h2{font-family:Fredoka,sans-serif;font-weight:600;font-size:1.15rem;margin:22px 
 
 <div class="overlay" id="start">
   <div class="sheet">
-    <div class="big">Topo Azië</div>
-    <p class="sub">Oefen alle plaatsen van je topoblad. Wat je fout hebt, komt later terug.</p>
+    <div class="big">Topo Arena: Azië</div>
+    <p class="sub">Verdien trofeeën, bouw combo’s en klim van Brons naar Legende. Wat je fout hebt, komt later terug.</p>
     <h2>Hoe wil je oefenen?</h2>
     <div class="modes" id="modes">
       <button class="mode" data-mode="type" aria-pressed="true"><b>Kaart naar naam</b><span>Je ziet een plek op de kaart. Typ de naam, precies goed gespeld.</span></button>
@@ -374,6 +412,7 @@ function progress(){
 function next(){
   clearMarks();answered=false;
   if(!queue.length) return finish();
+  if(queue.length>1&&queue[0]===cur){queue.push(queue.shift());}
   cur=queue.shift();
   dir=mode==='mix'?(Math.random()<.5?'type':'tap'):mode;
   const kind=CATS[cur.cat].kind;
@@ -417,20 +456,23 @@ function result(ok,msg,show,tapWrong){
   let extra='';
   if(ok){
     const first=!tried.has(cur.key);
-    if(first){firstTry++;stars++;pop('starPill');}
+    const gain=first?8:4;stars+=gain;extra=` <b>+${gain} 🏆</b>`;
+    if(first)firstTry++;pop('starPill');
     cleared++;streak++;bestStreak=Math.max(bestStreak,streak);pop('streakPill');
-    if(streak%5===0){stars+=2;banner(`🔥 ${streak} op rij!`);confetti(streak>=10?160:110,1.6);extra=` <b>+2 bonussterren</b> voor ${streak} op rij!`;}
+    if(streak%5===0){stars+=10;banner(`COMBO x${streak}!`);confetti(streak>=10?160:110,1.6);extra+=` <b>+10 combobonus!</b>`;}
     else confetti(first?18:10,.9);
   } else {
-    if(streak>=3)extra=` Je reeks van ${streak} is voorbij.`;
+    stars=Math.max(0,stars-3);extra=' <b>−3 🏆</b>';
+    if(streak>=3)extra+=` Combo van ${streak} gebroken.`;
     streak=0;
     missed.add(cur.key);
-    queue.splice(Math.min(3,queue.length),0,cur);
+    const pos=queue.length<=3?queue.length:Math.min(queue.length,6+(Math.random()*7|0));
+    queue.splice(pos,0,cur);
   }
   hud();
   tried.add(cur.key);progress();
   const also=cur.ans.length>1?` <span class="kind">(ook goed: ${cur.ans.slice(1).join(', ')})</span>`:'';
-  const praise=(streak>=10?['Onstuitbaar!','Topo-kampioen!','Wat een reeks!']:['Goed zo!','Top!','Helemaal goed!','Precies!','Knap!'])[Math.random()*(streak>=10?3:5)|0];
+  const praise=(streak>=10?['Niet te stoppen!','Arena-held!','Wat een combo!']:['Raak!','Knal!','Yes!','Perfect!','Boem!'])[Math.random()*(streak>=10?3:5)|0];
   panel.innerHTML=`<p class="fb ${ok?'ok':'bad'}">${ok?`<b>${praise}</b> ${dir==='type'?'Goed gespeld.':''}`:msg}
     ${extra}${!ok&&show?`<br><span class="spell">${show}</span>`:''}${!ok&&!show&&!tapWrong?'':''}${!ok?also:''}</p>
     ${!ok?'<p class="kind" style="margin:-4px 0 10px">Deze komt straks nog een keer.</p>':''}
@@ -445,9 +487,12 @@ function finish(){
   const isBest=best[id]==null||pct>best[id];
   if(isBest){best[id]=pct;try{localStorage.setItem('topo-azie-best',JSON.stringify(best))}catch(e){}}
   const ms=[...missed].map(k=>byKey[k]);
+  const maxT=total*8+Math.floor(total/5)*10,rp=stars/maxT;
+  const rk=[[.25,'🥉','Brons'],[.45,'🥈','Zilver'],[.65,'🥇','Goud'],[.8,'💎','Diamant'],[.92,'🔮','Mythisch'],[9,'👑','Legende']].map(([t,icon,name])=>({t,icon,name})).find(r=>rp<r.t);
   document.getElementById('endSheet').innerHTML=`
-    <div class="big">${pct===100?'Alles in één keer goed!':pct>=80?'Sterk gedaan!':'Klaar!'}</div>
-    <p class="earned">⭐ ${stars} sterren  ·  🔥 langste reeks: ${bestStreak}</p>
+    <div class="rank">Jouw rang</div>
+    <div class="big">${rk.icon} ${rk.name}</div>
+    <p class="earned">🏆 ${stars} trofeeën  ·  🔥 langste combo: ${bestStreak}</p>
     <p class="sub">${firstTry} van de ${total} in één keer goed (${pct}%).${isBest&&best[id]!=null?' Je beste score tot nu toe.':''}</p>
     ${ms.length?`<h2>Deze moet je nog even oefenen</h2><ul class="missed">${ms.map(i=>`<li>${i.ans[0]}</li>`).join('')}</ul>`:''}
     <div class="stack">
